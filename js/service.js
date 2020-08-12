@@ -28,27 +28,41 @@ var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny'] },
 
 var gMeme = {
     selectedImgId: 1,
-
     selectedLineIdx: 0,
-
     lines: [
         {
             txt: 'I never eat Falafel',
             size: 20,
             align: 'left',
-            color: 'red'
+            color: 'red',
+            y: 0,
+            x: 0
         }
     ]
 }
 
+function increaseLineIdx(){
+    gMeme.selectedLineIdx++
+}
 
-function drawImgFromlocal() {
+
+function setSelectedImage(imageId){
+   let selectedImage =  gImgs.find((image)=>image.id === imageId)
+   if(selectedImage){
+       gSelectedImg = selectedImage
+   }
+   drawImgFromlocal(selectedImage.url)
+}
+
+
+function drawImgFromlocal(imageUrl) {
+
     var img = new Image()
-    img.src = gImgs[0].url;
+    img.src = imageUrl;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height) //img,x,y,xend,yend
 
-        drawText(gMeme.lines[0].txt, 225, 225)
+      
     }
 }
 
@@ -57,17 +71,15 @@ function drawText(text, x, y) {
     gCtx.lineWidth = '2';
     gCtx.strokeStyle = 'black';
     gCtx.fillStyle = 'white';
-    gCtx.font = '40px Ariel';
+    gCtx.font = `${gMeme.lines[gMeme.selectedLineIdx].size}px Ariel`;
     gCtx.textAlign = 'center';
     gCtx.fillText(text, x, y);
     gCtx.strokeText(text, x, y);
 }
 
-function onTextDraw(text) {
-    gMeme.lines[0].txt = text;
-
+function onTextDraw(text,idx) {
+    gMeme.lines[idx].txt = text;
     drawImgFromlocal()
-
 }
 
 
@@ -81,30 +93,25 @@ function createImg(id,url,keyword){
 }
 
 
-function createMemes(){
-    gMemes=[]; 
-    gMemes.push(createMeme('1','img/1.jpg','funny'));
-    gMemes.push(createMeme('2','img/2.jpg','dogs'));
-    console.log(gMemes);
-}
-
-createMemes()
-
-
-function getMems(){
-
-    return gMemes
-
-    
-}
 
 function renderGallery(){
-    for(var i=0;i>gImgs.length;i++){
-        
-    }
-    
+    console.log('renderGallery');
+let elGallery=document.querySelector('.gallery')
+console.log(elGallery);
+
+    for(var i=0;i<gImgs.length;i++){
+        elGallery.innerHTML+=`<img onclick="onClickImg(${gImgs[i].id})" src=${gImgs[i].url} class="gallery-img"/>`
+    }  
 }
 
+//Add meme to gmem object , the function called from html and sets the line at at the selected input index (gMeme.seletedLineIdx)
+function addMemeToImg(text){
+    if(gMeme.lines.length-1<gMeme.selectedLineIdx){
+        gMeme.lines.push({})
+    }
+   gMeme.lines[gMeme.selectedLineIdx].txt=text
+   drawText(gMeme.lines[gMeme.selectedLineIdx].txt, 225, 225)
+}
 
 
 
