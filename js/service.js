@@ -83,6 +83,8 @@ function onTextDraw(text,idx) {
 }
 
 
+
+
 function createImg(id,url,keyword){
     return{
         id: null, 
