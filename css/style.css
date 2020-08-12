@@ -1,10 +1,7 @@
 * {
     box-sizing: border-box;
 }
-@font-face {
-    font-family: Redrose;
-    src: url(/fonts/RedRose-Regular.ttf);
-}
+
 
 body {
     background-color: whitesmoke;
@@ -26,9 +23,12 @@ canvas {
     border: 1px solid black;
 }
 
-.canvas-container {
-    background-color: whitesmoke;
-    margin: 0 auto;
-    width: 100vw;
-    height: 100vh;
+input{
+    border: 1px solid black;
+    width: 250px;
+    height: 30px;
+}
+
+.modal{
+    display: none;
 }

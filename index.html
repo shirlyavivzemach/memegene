@@ -8,7 +8,7 @@
 
 </head>
 
-<body>
+<body onload="onInit()">
 <header class ="main-header">
 <div class="logo">memegen</div>
 <ul class = "main-nav">
@@ -16,26 +16,21 @@
 <li><a href="#">About</a></li>
 </ul>
 <button class="mobile-menu-btn">☰</button>
-<input type="text" placeholder="Enter search keyword">
+<input type="search" placeholder="Enter search keyword">
 </header>
 
 <main class="main-content">
+    <div class="modal">
     <div class="canvas-container">
-        <canvas id="myCanvas" height="500" width="700"></canvas>
+        <canvas id="myCanvas" height="500" width="500"></canvas>
     </div>
+    
+    <input type="text" name="text" placeholder="Enter text" onkeyup="onTextDraw(this.value)">
     <button>Delete</button>
     <button>line Switch</button>
     <button>More line</button>
-    
+</div>
 </main>
-
-
-
-
-
-
-
-
 <script src="js/controller.js"></script> 
 <script src= "js/service.js"></script>
 <script src= "js/storage.js"></script> 
