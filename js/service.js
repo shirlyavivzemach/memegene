@@ -31,7 +31,7 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I never eat Falafel',
+            txt: '',
             size: 20,
             align: 'left',
             color: 'red',
@@ -49,6 +49,7 @@ function increaseLineIdx(){
 function setSelectedImage(imageId){
    let selectedImage =  gImgs.find((image)=>image.id === imageId)
    if(selectedImage){
+       gMeme.selectedImgId=selectedImage.url
        gSelectedImg = selectedImage
    }
    drawImgFromlocal(selectedImage.url)
@@ -56,22 +57,23 @@ function setSelectedImage(imageId){
 
 
 function drawImgFromlocal(imageUrl) {
-
     var img = new Image()
     img.src = imageUrl;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height) //img,x,y,xend,yend
-
-      
-    }
+        for(let i = 0 ; i < gMeme.lines.length;i++){
+            console.log(i,gMeme.lines[i].y)
+            drawText(gMeme.lines[i].txt, 225, gMeme.lines[i].y)
+        }
+    } 
 }
 
 
 function drawText(text, x, y) {
-    gCtx.lineWidth = '2';
+   gCtx.lineWidth = '2';
     gCtx.strokeStyle = 'black';
     gCtx.fillStyle = 'white';
-    gCtx.font = `${gMeme.lines[gMeme.selectedLineIdx].size}px Ariel`;
+    gCtx.font = `${gMeme.lines[gMeme.selectedLineIdx].size}px Impact`;
     gCtx.textAlign = 'center';
     gCtx.fillText(text, x, y);
     gCtx.strokeText(text, x, y);
@@ -79,7 +81,7 @@ function drawText(text, x, y) {
 
 function onTextDraw(text,idx) {
     gMeme.lines[idx].txt = text;
-    drawImgFromlocal()
+    drawImgFromlocal( gMeme.selectedImgId)
 }
 
 
@@ -95,24 +97,30 @@ function createImg(id,url,keyword){
 }
 
 
-
-function renderGallery(){
-    console.log('renderGallery');
-let elGallery=document.querySelector('.gallery')
-console.log(elGallery);
-
-    for(var i=0;i<gImgs.length;i++){
-        elGallery.innerHTML+=`<img onclick="onClickImg(${gImgs[i].id})" src=${gImgs[i].url} class="gallery-img"/>`
-    }  
-}
-
-//Add meme to gmem object , the function called from html and sets the line at at the selected input index (gMeme.seletedLineIdx)
+//Add meme to gmem object , the function called from html and sets the line at the selected input index (gMeme.seletedLineIdx)
 function addMemeToImg(text){
     if(gMeme.lines.length-1<gMeme.selectedLineIdx){
         gMeme.lines.push({})
     }
-   gMeme.lines[gMeme.selectedLineIdx].txt=text
-   drawText(gMeme.lines[gMeme.selectedLineIdx].txt, 225, 225)
+    gMeme.lines[gMeme.selectedLineIdx].txt=text
+    memeSetLineHeight(initialLineHeight(gMeme.selectedLineIdx))
+   
+    
+}
+function initialLineHeight(idx){
+    switch(idx){
+        case 0: 
+        return 30;
+        case 1:
+return gCanvas.height-30
+case 2:
+    return gCanvas.height/2-15
+    }
+}
+
+function memeSetLineHeight(height){
+    gMeme.lines[gMeme.selectedLineIdx].y=height
+    drawImgFromlocal( gMeme.selectedImgId)
 }
 
 

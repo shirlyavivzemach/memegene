@@ -2,49 +2,230 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: whitesmoke;
-    margin: auto;
-    text-align: center;
-    font-family: Redrose;
+@font-face {
+   font-family: Montserrat; 
+src: url(../design/fonts/Montserrat-Regular.ttf)
+
 }
+@font-face {
+    font-family: Impact; 
+ src: url(../design/fonts/impact.ttf)
+ 
+ }
+
+/*  BASE */
+body {
+
+    margin: 0;
+    text-align: center;
+    font-family: Montserrat;
+}
+
+a{
+ 
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 400;
+
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin-top: 0;
+    font-weight: 400;
+}
+
 
 button {
     cursor: pointer;
     display: inline-block;
-    font-family: Redrose;
+    font-family: Montserrat;
     padding: 5px 10px;
 }
 
 canvas {
     display: block;
+    letter-spacing: 1.4px;
     margin: 0 auto;
     border: 1px solid black;
 }
 
 input {
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     width: 250px;
     height: 30px;
 }
 
-.modal {
+.container {
+    /* max-width: 1000px; */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.2rem;
+}
+
+/* COMPONENTS */
+
+.main-header{
+   
+   height: 4.125rem; 
+    text-align: center;
+    background-color: #ff7f00; 
+    margin-bottom: 100PX;
+}
+
+.main-header.logo{
+    height: 1.375rem; 
+    width: 8.3125rem;
+    margin-left: 0;
+
+}
+
+
+.main-nav li {
+    text-align: center;
+    font-weight: 700;
+    width: 4rem;
+    height: 4rem;
+  padding: 15px;
+    
+}
+
+.main-nav li a {
+    display: flex;
+    align-items: center;
+   margin: auto;
+   margin-right: 3.5rem;
+  
+    
+}
+
+.main-header a{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    text-decoration: none;
+    
+}
+
+
+
+.main-nav li:hover {
+    box-shadow: -1px 0 0 #ff7f00, inset 0 -6px 0 black;
+}
+
+.main-nav a:hover{
+  color: black;
+}
+
+.open-img{
     display: none;
-    position: absolute;
-    left: 20%;
-    top: 50%;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+   
+   
     
 }
 
 .gallery {
     width: 100%;
     height: 60%;
+    background-color: #e3e3e3;
 }
 
 .gallery-img {
-    width: 200px;
+    width: 22rem;
+    height: 20rem;
+    
+}
+
+.delete{
+    src: url(../design/ICONS/trash.png);
+    background-color: white;
+}
+
+.mobile-menu-btn{
+    display: none;
+}
+
+.shirly{
+    border-radius: 50%;
+    width: 320px;
+    margin:auto;
+    left: 0;
+}
+
+.social-container {
+    width: 130px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 12px;
+    background-color: #ff7f00;
+    
+}
+
+.list-inline .list-inline-item{
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 100%;
+    width: 39px;
+    height: 39px;
+    background-color: #e5e5e5;
+    color: #ffffff;
+    padding: 19px 5px 5px 5px;
+}
+
+p{
+    display: flex;
+
+}
+
+/* FOOTER */
+
+.main-footer{
+    background-color: #ff7f00 ;
     height: 200px;
+  
+}
+
+
+
+
+
+
+
+
+/* flex helpers */
+
+.flex {
+    display: flex;
+}
+
+.center {
+    justify-content: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.space-around {
+    align-content: space-around;
+}
+
+.align-center {
+    align-items: center;
+}
+
+/* list-helpers */
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.flex-start {
+    align-self: start;
+}
+
+.padding-bottom {
+    padding-bottom: 60px;
 }

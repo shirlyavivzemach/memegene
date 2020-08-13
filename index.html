@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,33 +10,79 @@
 </head>
 
 <body onload="onInit()">
-<header class ="main-header">
-<div class="logo">memegen</div>
-<ul class = "main-nav">
-<li><a onclick="onCloseModal()" href="#">Gallery</a></li>
-<li><a href="#">About</a></li>
-</ul>
-<button class="mobile-menu-btn">☰</button>
-<input type="search" placeholder="Enter search keyword">
-</header>
 
-<main class="main-content">
-    <div class="gallery" ></div>
-    <div class="modal">
-    <div class="canvas-container">
-        <canvas id="myCanvas" height="500" width="500"></canvas>
-    </div>
+
+ 
+        
+        <header class="main-header container flex space-between align-center">
+            <div class="logo">memegen</div>
+            <ul class="main-nav clean-list flex space-between align-center">
+                <li><a onclick="onCloseImg()" href="#"> Gallery </a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Memes</a></li>
+            </ul>
+            <button class="mobile-menu-btn" hidden>☰</button>
+        
+    </header>
+    <input type="search" placeholder="Enter search keyword">
+
+    <main class="main-content">
+        <div class="gallery"></div>
+        <div class="open-img">
+            <div class="canvas-container">
+                <canvas id="myCanvas" height="500" width="500"></canvas>
+            </div>
+
+            <input type="text" name="text" placeholder="Enter text" onkeyup="addMemeToImg(this.value)">
+            <button class="delete" onclick="onDeleteText()">Delete</button>
+            <button class="color">Share</button>
+            <button onclick="onSwitchLine()">line Switch</button>
+            <button onclick="onIncreaseFont()">Increase font</button>
+            <button onclick="onDcreaseFont()">Decrease font</button>
+            <button onclick="increaseLineIdx()">More line</button>
+            <button onclick="onChangeLineHeight(true)">Change line height</button>
+            <button class="share">Share</button>
+        </div>
+    </main>
+
+    <section class="About">
+        <div class="about-container container flex space-between align-center">  
+            <img class="shirly" src="design/shirly.jpg" alt="">        
+            <h2 class="name">Shirly Aviv Zemach</h2>
+            <p>Glad to introduce my Meme app, hope you enjoyed playing.</p>
+        </div>
+<nav class="social-container">
+    <ul class="list-inline clean-list container flex space-between align-center">
+        <li class="list-inline-item">
+            <a href="#">
+                <div class="facebook"></div>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <div class="linkedin"></div>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <div class="cat"></div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        </nav>
+    </section>
+    <footer class="main-footer">
+        <a>memegen</a>
+        <h4>all rights reserved 2020</h4>
+        </footer>
     
-    <input type="text" name="text" placeholder="Enter text" onkeyup="addMemeToImg(this.value)">
-    <button>Delete</button>
-    <button>line Switch</button>
-    <button onclick="onIncreaseFont()">Increase font</button>
-    <button  onclick="increaseLineIdx()">More line</button>
-</div>
-</main>
-<script src="js/controller.js"></script> 
-<script src= "js/service.js"></script>
-<script src= "js/storage.js"></script> 
-  
+    <script src="js/controller.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/storage.js"></script>
+
 </body>
+
 </html>
