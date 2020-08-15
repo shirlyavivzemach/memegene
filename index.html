@@ -11,74 +11,123 @@
 
 <body onload="onInit()">
 
+    <div class="screen" onclick="toggleMenu()"></div>
 
- 
-        
-        <header class="main-header container flex space-between align-center">
-            <div class="logo">memegen</div>
+    <header class="main-header">
+        <div class= "container flex space-between align-center">
+            <img class="logo" src="./design/logo.png">
             <ul class="main-nav clean-list flex space-between align-center">
+                <!-- <li><a href="#">Memes</a></li> -->
                 <li><a onclick="onCloseImg()" href="#"> Gallery </a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Memes</a></li>
             </ul>
-            <button class="mobile-menu-btn" hidden>☰</button>
-        
+            <button class="mobile-menu-btn" onclick="toggleMenu()" >☰</button>
+        </div>
     </header>
-    <input type="search" placeholder="Enter search keyword">
+
+    <div class="name-icon-wrapper">
+        <div class="search-box">
+            <input type="text" class="search-input" name="search" onkeyup="searchOption(this.value)" placeholder="Enter search keyword" ><img class="small-icon-search"
+            src="design/ICONS/search-icon.png">
+        </div>
+        <div class="categories-container"></div>
+    </div>
 
     <main class="main-content">
         <div class="gallery"></div>
+        <div class="grid-item">
+        </div>
         <div class="open-img">
-            <div class="canvas-container">
-                <canvas id="myCanvas" height="500" width="500"></canvas>
-            </div>
+            <div class="img-button-wrapper">
 
-            <input type="text" name="text" placeholder="Enter text" onkeyup="addMemeToImg(this.value)">
-            <button class="delete" onclick="onDeleteText()">Delete</button>
-            <button class="color">Share</button>
-            <button onclick="onSwitchLine()">line Switch</button>
-            <button onclick="onIncreaseFont()">Increase font</button>
-            <button onclick="onDcreaseFont()">Decrease font</button>
-            <button onclick="increaseLineIdx()">More line</button>
-            <button onclick="onChangeLineHeight(true)">Change line height</button>
-            <button class="share">Share</button>
+                <div class="canvas-container flex">
+                    <canvas id="myCanvas" height="540" width="540"></canvas>
+                </div>
+                <div class="wrapper-btn">
+                    <div class="text-input-line">
+                        <input type="text" name="text" placeholder="Enter text" onkeyup="addMemeToImg(this.value)">
+                    </div>
+                    <div class="first-line-btn">
+                        <button onclick="onChangeLineHeight(true)" class="small-icon"><img class="small-icon-img"
+                                src="design/ICONS/icons8-down-arrow-90.png"></button>
+                        <button onclick="onChangeLineHeight(false)" class="small-icon"><img class="small-icon-img"
+                                src="design/ICONS/icons8-up-90.png"></button>
+                        <button onclick="onSwitchLine()" class="small-icon"><img class="small-icon-img"
+                                src="./design/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                        <button onclick="increaseLineIdx()" class="small-icon"><img class="small-icon-img"
+                                src="./design/ICONS/add.png"></button>
+                        <button onclick="onDeleteText()" class="small-icon"><img class="small-icon-img"
+                                src="./design/ICONS/trash.png"></button>
+                    </div>
+
+                    <div class="second-line-btn">
+                        <button onclick="onIncreaseFont()" class="small-icon"><img class="small-icon-img"
+                                src="./design/ICONS/increase font - icon.png"></button>
+                        <button onclick="onDcreaseFont()" class="small-icon"><img class="small-icon-img"
+                                src="./design/ICONS/decrease font - icon.png"></button>
+                        <button onclick="onChangeLineAlign('left')" class="small-icon"><img class="small-icon-img"
+                                src="./design/ICONS/align-to-left.png"></button>
+                        <button onclick="onChangeLineAlign('center')" class="small-icon"><img class="small-icon-img"
+                                src="./design/ICONS/center-text-alignment.png"></button>
+                        <button onclick="onChangeLineAlign('right')" class="small-icon"><img class="small-icon-img"
+                                src="./design/ICONS/align-to-right.png"></button>
+                    </div>
+                    <div class="third-line-btn">
+                        <div class="dropDown">
+                            <select name="Impact">
+                                <option value="">Impact</option>
+                                <option value="Ariel">Ariel</option>
+                                <option value="Montserrat">Montserrat</option>
+                                <option value="hamster">Hamster</option>
+                            </select>
+                         </div>
+                        <button class="small-icon"><img class="small-icon-img" src="./design/ICONS/text stroke.png"></button>
+                        <button class="small-icon">
+                        <input type="color" hidden id="color" value="#f6b73c" onclick="onColorSelect(this.value)"><label for="color">
+                            <img class="small-icon-img" src="./design/ICONS/paint-board-and-brush.png">
+                    </label>
+                </button>
+                    </div>
+                    
+
+                    <div class="scrollmenu">
+                        <a href="#lef"><img class="stikers" src="design/left.png"></a>
+                        <a href="#hat"><img class="stikers" src="design/hat.png"></a>
+                        <a href="#glasses"><img class="stikers" src="design/glass.png"></a>
+                        <a href="#gift"><img class="stikers" src="design/gift.png"></a>
+                        <a href="#right"><img class="stikers" src="design/right.png"></a>
+                    </div>
+                    <div class="share-wrapper">
+                        <button onclick="" class="share-btn">share</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
     <section class="About">
-        <div class="about-container container flex space-between align-center">  
-            <img class="shirly" src="design/shirly.jpg" alt="">        
-            <h2 class="name">Shirly Aviv Zemach</h2>
-            <p>Glad to introduce my Meme app, hope you enjoyed playing.</p>
+        <div class="center ">
+                <div class="img-about">
+                        <img class="about-me" src="design/shirly.jpg" alt="">
+                   </div>
+            <div class="center-wrapper">
+                <h2 class="label-about">Shirly Aviv Zemach</h2>
+                <p>Glad to introduce my Meme app, hope you enjoyed playing.</p>
+            
+            <div class="social-container">
+                    <a href= "https://www.linkedin.com/in/shirly-aviv-zemach/" class="social-icon"><img class="social-icon"src="./design/ICONS/linkedin-logo.png"></a>
+                    <a href= "https://www.facebook.com/shirly.aviv" class="social-icon"><img class="social-icon"src="./design/ICONS/facebook-logo.png"></a>
+                    <a href= "https://github.com/shirlyavivzemach/shirlyAvivZemach" class="social-icon"><img class="social-icon"src="./design/ICONS/github-logo.png"></a>
+                </div>
+            </div>
         </div>
-<nav class="social-container">
-    <ul class="list-inline clean-list container flex space-between align-center">
-        <li class="list-inline-item">
-            <a href="#">
-                <div class="facebook"></div>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#">
-                            <div class="linkedin"></div>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#">
-                            <div class="cat"></div>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-        </nav>
     </section>
+
     <footer class="main-footer">
-        <a>memegen</a>
+        <a><img class="footer-logo" src="./design/logo.png"></a>
         <h4>all rights reserved 2020</h4>
-        </footer>
-    
+    </footer>
+
     <script src="js/controller.js"></script>
     <script src="js/service.js"></script>
     <script src="js/storage.js"></script>
